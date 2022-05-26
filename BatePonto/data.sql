@@ -1,0 +1,6 @@
+CREATE TABLE folhas (  nome varchar(100) DEFAULT NULL,  rg varchar(100) DEFAULT NULL,  idUsuario varchar(100) DEFAULT NULL,  id varchar(100) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO folhas VALUES ('Andre v','123.456','5898d69b-4701-496c-802c-a1cd4a0f8c03','1'),('dihh','123.456789','9c4b82e8-a66a-4256-b365-8b2068e0f11a','2');
+CREATE TABLE pontos ( entrada1 time DEFAULT NULL,  saida1 time DEFAULT NULL,  entrada2 time DEFAULT NULL,  saida2 time DEFAULT NULL,  data date DEFAULT NULL,  idFolha varchar(100) DEFAULT NULL,  id varchar(100) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+INSERT INTO pontos VALUES ('07:00:00','12:00:00','13:00:00','16:00:00','2022-05-01','1','1'),('08:00:00','12:00:00','13:00:00','16:00:00','2022-05-01','1','2'),('06:00:00','12:00:00','13:00:00','16:00:00','2022-05-01','1','3'),('06:00:00','12:00:00','13:00:00','16:00:00','2022-05-01','2','4');
+CREATE TABLE usuarios (  login varchar(100) DEFAULT NULL,  senha varchar(100) DEFAULT NULL,  id varchar(100) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+INSERT INTO usuarios VALUES ('andre','123','5898d69b-4701-496c-802c-a1cd4a0f8c03'),('dihh','123','9c4b82e8-a66a-4256-b365-8b2068e0f11a');
