@@ -120,14 +120,26 @@
     .body{
         height: 60vh;
     }
-    .ponto{
-        background-color: darkblue;
-        height: 150px;
+    .relogio{
+         height: 150px;
         width: 150px;
         border-radius: 50%;
         text-align: center;
         line-height: 140px;
-        color: white;
         font-size: 800%;
         margin-top: 21vh;
+        color: darkblue;
     }
+    .iconevermelho
+    {
+        color: red;
+    }
+    .historico .historico::placeholder{
+        font-size: 95%;
+    }
+    #adm
+    {
+        display: none;
+    }
+
+    

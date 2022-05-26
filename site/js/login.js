@@ -5,7 +5,7 @@ if(logado == "true")
 }
 async function login()
 {
-    usuarios = await (await fetch("http://localhost:3000/usuarios")).json()
+    usuarios = await (await fetch("http://127.0.0.1:3000/usuarios")).json()
     console.log(usuarios)
     usuario = document.getElementById("usuario").value
     senha = document.getElementById("senha").value
@@ -21,6 +21,7 @@ async function login()
     {
         localStorage.logado = true
         localStorage.idUsuario = userlogado.id
+        localStorage.adm = userlogado.adm
         location.href = "../index.html"
     }
 }

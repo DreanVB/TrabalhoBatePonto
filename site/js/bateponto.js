@@ -13,9 +13,9 @@ pontohoje={}
 async function pegarpontos()
 {
     id = localStorage.idUsuario
-    folhas = await (await fetch("http://localhost:3000/folhas")).json()
+    folhas = await (await fetch("http://127.0.0.1:3000/folhas")).json()
     folha = folhas.find((elemento) => elemento.idUsuario == id)
-    pontos =  await (await fetch("http://localhost:3000/pontos")).json()
+    pontos =  await (await fetch("http://127.0.0.1:3000/pontos")).json()
     ponto = pontos.filter((elemento) => elemento.idFolha == folha.id)
     console.log(str_data,pontos)
     date=(mes+1)+"/"+dia+"/"+ano4
@@ -50,7 +50,7 @@ async function baterponto() {
             "id": uuidv4()
         }
         
-        await (await fetch(`http://localhost:3000/criapontos?entrada1=${str_hora}&entrada2=00:00&saida1=00:00&saida2=00:00&data=${date}&idFolha=${folha.id}&id=${uuidv4()}`)).json()
+        await (await fetch(`http://127.0.0.1:3000/criapontos?entrada1=${str_hora}&entrada2=00:00&saida1=00:00&saida2=00:00&data=${date}&idFolha=${folha.id}&id=${uuidv4()}`)).json()
         pontos.push(gravarponto)
         localStorage.folhadepontos = JSON.stringify(pontos)
 
@@ -67,19 +67,15 @@ async function baterponto() {
         else if (pontohoje.saida2 == "00:00:00") {
             pontohoje.saida2 = str_hora
         }
-        console.log(`http://localhost:3000/atualizapontos?entrada1=${pontohoje.entrada1}&entrada2=${pontohoje.entrada2}&saida1=${pontohoje.saida1}&saida2=${pontohoje.saida2}&data=${date}&idFolha=${pontohoje.idFolha}&id=${pontohoje.id}`)
-        await (await fetch(`http://localhost:3000/atualizapontos?entrada1=${pontohoje.entrada1}&entrada2=${pontohoje.entrada2}&saida1=${pontohoje.saida1}&saida2=${pontohoje.saida2}&data=${date}&idFolha=${pontohoje.idFolha}&id=${pontohoje.id}`)).json()
+        console.log(`http://127.0.0.1:3000/atualizapontos?entrada1=${pontohoje.entrada1}&entrada2=${pontohoje.entrada2}&saida1=${pontohoje.saida1}&saida2=${pontohoje.saida2}&data=${date}&idFolha=${pontohoje.idFolha}&id=${pontohoje.id}`)
+        await (await fetch(`http://127.0.0.1:3000/atualizapontos?entrada1=${pontohoje.entrada1}&entrada2=${pontohoje.entrada2}&saida1=${pontohoje.saida1}&saida2=${pontohoje.saida2}&data=${date}&idFolha=${pontohoje.idFolha}&id=${pontohoje.id}`)).json()
 
     }
 
     location.reload()
 }
 
-function uuidv4() {
-    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-    );
-}
+
 
 function gethora() {
     const data = new Date()
