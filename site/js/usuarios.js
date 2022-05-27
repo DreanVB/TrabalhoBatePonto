@@ -1,4 +1,9 @@
 
+adm = localStorage.adm
+if(adm != "1")
+{
+    location.href = "index.html"
+}
 async function getUsuarios()
 {
    usuarios = await (await fetch("http://127.0.0.1:3000/usuarios")).json()
