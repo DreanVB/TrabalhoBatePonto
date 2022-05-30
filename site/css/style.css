@@ -141,5 +141,22 @@
     {
         display: none;
     }
-
+    .relogio2
+    {
+            font-size: xx-large; 
+    }
+    .ponto
+    {
+        list-style: none ;
+        
+    }
+    ul img
+    {
+        margin-top: 21vh;
+        width: 60px;
+    }
+    .ponto li
+    {
+        
+    }
     

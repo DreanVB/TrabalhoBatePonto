@@ -21,34 +21,44 @@
 
 <body onload="initTimer();">
 
-    <div class="header">
+    <div class="header center">
         <div class="container">
             <div class="row">
-                <div class="center" id="data"></div>
+                <div class="" id="data"></div>
             </div>
+            <span>Olá, Fulano</span>
             <div class="row">
-                <div class="center">
+                <div class="center relogio2">
                     <span id="timer">12:33:53</span>
                 </div>
 
             </div>
-
+            <div class="row">
+                <div class="col-6">                    
+                    <div class="row"><div class="col-12">00:00:00</div></div>
+                    <div class="row"><div class="col-12">Banco de Horas</div></div>
+                </div>
+                <div class="col-6">
+                    <div class="row"><div class="col-12">00:00:00</div></div>
+                    <div class="row"><div class="col-12">Horas Trabalhadas</div></div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="body">
         <div class="row">
-            <div class="col-6">
-                <ul>
+            <div class="col-6 ">
+                <ul class="ponto">
                     <li >Entrada: <span id="entrada1">00:00</span></li>
                     <li >Saida: <span id="saida1">00:00</span></li>
+                    <img src="img/icon.png" alt=""><span class="intervalo"> Intervalo</span>
                     <li >Entrada: <span id="entrada2">00:00</span></li>
                     <li >Saida: <span id="saida2">00:00</span></li>
                 </ul>
 
             </div>
             <div class="col-6">
-                <i onclick="baterponto()" class="fa-solid fa-clock relogio"></i>
-
+                <button onclick="baterponto()" class="fa-solid fa-clock relogio"></button>
             </div>
         </div>
 
