@@ -26,20 +26,20 @@
             <div class="row">
                 <div class="" id="data"></div>
             </div>
-            <span>Olá, Fulano</span>
+            <span>Olá, </span><span id="nome2">Fulano</span>
             <div class="row">
                 <div class="center relogio2">
-                    <span id="timer">12:33:53</span>
+                    <span id="timer">00:00:00</span>
                 </div>
 
             </div>
             <div class="row">
                 <div class="col-6">                    
-                    <div class="row"><div class="col-12">00:00:00</div></div>
+                    <div class="row"><div class="col-12" id="bancoDeHoras">00:00</div></div>
                     <div class="row"><div class="col-12">Banco de Horas</div></div>
                 </div>
                 <div class="col-6">
-                    <div class="row"><div class="col-12">00:00:00</div></div>
+                    <div class="row"><div class="col-12" id="horasTrabalhadas">00:00</div></div>
                     <div class="row"><div class="col-12">Horas Trabalhadas</div></div>
                 </div>
             </div>
@@ -66,7 +66,8 @@
     <div class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-3 center"><i onclick="history()" class="fa-solid fa-clock-rotate-left"></i></div>
+                <div class="col-3 center"><i onclick="history()" class="fa-solid fa-clock-rotate-left"></i>
+                </div>
                 <div class="col-3 center"><i onclick="telaponto()" class="fa-solid fa-user-clock"></i></div>
                 <div class="col-3 center"><i id="adm" onclick="users()" class="fa-solid fa-users"></i></div>
                 <div class="col-3 center"><i onclick="deslogar()" class="fa-solid fa-right-from-bracket"></i>

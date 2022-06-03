@@ -156,3 +156,13 @@
         width: 60px;
     }
     
+    .tabelahistorico
+    {
+        max-height: 350px;
+        overflow: auto;
+    }
+    .tabelausuarios
+    {
+        max-height: 200px;
+        overflow: auto;  
+    }

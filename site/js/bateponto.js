@@ -19,9 +19,14 @@ async function pegarpontos()
     ponto = pontos.filter((elemento) => elemento.idFolha == folha.id)
     console.log(str_data,pontos)
     date=(mes+1)+"/"+dia+"/"+ano4
-   date=new Date((mes+1)+"/"+dia+"/"+ano4).toISOString()
+    console.log(ano4+"-"+(mes+1)+"-"+dia +" 00:00:00")
+   date=new Date(ano4+"-"+(mes+1)+"-"+dia +" 00:00:00").toISOString()
+   date = date.split("T")[0]+"T00:00:00.000Z"
 console.log(date)
     pontohoje = ponto.find((elemento) => elemento.data == date)
+    console.log(ponto)
+    console.log(pontohoje)
+    
     if (pontohoje != undefined) {
         document.getElementById("entrada1").innerHTML = pontohoje.entrada1
         document.getElementById("saida1").innerHTML = pontohoje.saida1
@@ -50,25 +55,52 @@ async function baterponto() {
             "id": uuidv4()
         }
         
-        await (await fetch(`http://127.0.0.1:3000/criapontos?entrada1=${str_hora}&entrada2=00:00&saida1=00:00&saida2=00:00&data=${date}&idFolha=${folha.id}&id=${uuidv4()}`)).json()
+        await (await fetch(`http://127.0.0.1:3000/criapontos?entrada1=${str_hora}&entrada2=00:00&saida1=00:00&saida2=00:00&data=${date}&idFolha=${folha.id}&id=${uuidv4()}&horasTrabalhadas=${"00:00"}`)).json()
         pontos.push(gravarponto)
         localStorage.folhadepontos = JSON.stringify(pontos)
 
     }
+
+    console.log(pontohoje)
+    calculoHorasTrabalhadas = 0
     if (pontohoje != undefined) {
         if (pontohoje.saida1 == "00:00:00") {
+            console.log(str_hora)
             pontohoje.saida1 = str_hora
-            console.log(pontohoje)
-            
+
+            var entrada1 = pontohoje.entrada1
+            var saida1 = pontohoje.saida1
+            entrada1 = new Date("0001-01-01 "+entrada1)
+            saida1 = new Date("0001-01-01 "+saida1)
+            var diferenca = saida1 - entrada1
+            minutos = Math.floor (((diferenca/3600000)%1)*60)
+            horas = Math.floor ((diferenca/1000/60)/60)
+            calculoHorasTrabalhadas = (new Date("0001-01-01 "+horas+':'+minutos)).toTimeString().split(` `)[0]
+            console.log(calculoHorasTrabalhadas)
         }
         else if (pontohoje.entrada2 == "00:00:00") {
             pontohoje.entrada2 = str_hora
+            calculoHorasTrabalhadas = pontohoje.horasTrabalhadas
+
         }
         else if (pontohoje.saida2 == "00:00:00") {
             pontohoje.saida2 = str_hora
+            var entrada2 = pontohoje.entrada2
+            var saida2 = pontohoje.saida2
+            entrada2 = new Date("0001-01-01 "+entrada2)
+            saida2 = new Date("0001-01-01 "+saida2)
+            var diferenca = saida2 - entrada2
+            minutos = Math.floor (((diferenca/3600000)%1)*60)
+            horas = Math.floor ((diferenca/1000/60)/60)
+
+            horasFinalDia = new Date("0001-01-01 "+pontohoje.horasTrabalhadas)
+            horasFinalDia = new Date(horasFinalDia.setHours(horasFinalDia.getHours() + horas))
+            horasFinalDia = new Date(horasFinalDia.setMinutes(horasFinalDia.getMinutes() + minutos))
+
+            calculoHorasTrabalhadas = (horasFinalDia).toTimeString().split(` `)[0]
+
         }
-        console.log(`http://127.0.0.1:3000/atualizapontos?entrada1=${pontohoje.entrada1}&entrada2=${pontohoje.entrada2}&saida1=${pontohoje.saida1}&saida2=${pontohoje.saida2}&data=${date}&idFolha=${pontohoje.idFolha}&id=${pontohoje.id}`)
-        await (await fetch(`http://127.0.0.1:3000/atualizapontos?entrada1=${pontohoje.entrada1}&entrada2=${pontohoje.entrada2}&saida1=${pontohoje.saida1}&saida2=${pontohoje.saida2}&data=${date}&idFolha=${pontohoje.idFolha}&id=${pontohoje.id}`)).json()
+        await (await fetch(`http://127.0.0.1:3000/atualizapontos?entrada1=${pontohoje.entrada1}&entrada2=${pontohoje.entrada2}&saida1=${pontohoje.saida1}&saida2=${pontohoje.saida2}&data=${date}&idFolha=${pontohoje.idFolha}&id=${pontohoje.id}&horasTrabalhadas=${calculoHorasTrabalhadas}`)).json()
 
     }
 
