@@ -6,21 +6,15 @@ app.use(cors())
 const postgres = require('postgres') 
 
 const sql = postgres('postgres://postgres:123456@localhost:5432/bateponto')
-
-
-// var mysql = require('mysql');
-// var con = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "12345678",
-//   database: "bateponto"
-// });
-
-// con.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-// });
-
+// const sql = postgres('postgres://xdlheqqfgemyjf:34295f8286531565836e8ae8ffafb3ec994bd6fc39b3e6446f193ff2443edc65@ec2-54-158-247-210.compute-1.amazonaws.com:5432/d5gmrncleg3mj5', {
+//   host                 : 'ec2-54-158-247-210.compute-1.amazonaws.com',            // Postgres ip address[es] or domain name[s]
+//   port                 : 5432,          // Postgres server port[s]
+//   database             : 'd5gmrncleg3mj5',            // Name of database to connect to
+//   username             : 'xdlheqqfgemyjf',            // Username of database user
+//   password             : '34295f8286531565836e8ae8ffafb3ec994bd6fc39b3e6446f193ff2443edc65',            // Password of database user
+//   ssl                  : true,         // true, prefer, require, tls.connect options
+// })
+// const sql = postgres('postgres://xdlheqqfgemyjf:34295f8286531565836e8ae8ffafb3ec994bd6fc39b3e6446f193ff2443edc65@ec2-54-158-247-210.compute-1.amazonaws.com:5432/d5gmrncleg3mj5')
 
 
 app.get('/', async function (req, res) {

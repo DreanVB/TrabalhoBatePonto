@@ -152,8 +152,7 @@
     }
     ul img
     {
-        margin-top: 21vh;
-        width: 60px;
+       width: 60px;
     }
     
     .tabelahistorico
@@ -165,4 +164,14 @@
     {
         max-height: 200px;
         overflow: auto;  
+    }
+    .intervaloimg{
+        margin-top: 11vh !important;
+    }
+
+    .primeirospontos{
+        margin-top: 10vh;
+    }
+    .segundoponto{
+        margin-top: 10vh;
     }
