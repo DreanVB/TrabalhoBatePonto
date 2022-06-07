@@ -1,3 +1,7 @@
+adm = localStorage.adm
+if(adm=="1"){
+    users()
+}
 str_data = ""
 str_hora = ""
 dia=""

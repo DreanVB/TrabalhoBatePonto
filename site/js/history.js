@@ -1,3 +1,7 @@
+adm = localStorage.adm
+if(adm=="1"){
+    users()
+}
 idFolha = ""
 async function pegarhistory() {
     id = localStorage.idUsuario

@@ -2,6 +2,8 @@ logado = localStorage.logado
 adm = localStorage.adm
 if(adm=="1"){
 document.getElementById("adm").style.display= "inline"
+document.getElementById("historico").style.display="none"
+document.getElementById("ponto").style.display="none"
 }
 console.log(adm)
 if(logado != "true")
