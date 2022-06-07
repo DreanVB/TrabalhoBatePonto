@@ -14,7 +14,7 @@ async function getUsuarios()
 }
 async function apagarUsuario(id)
 {
-  if(confirm()){
+  if(confirm("Deseja apagar o usuario permanentemente?")){
     await (await fetch("http://127.0.0.1:3000/apagar/"+id)).json()
     location.reload()    }
 }

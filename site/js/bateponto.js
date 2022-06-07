@@ -38,7 +38,7 @@ console.log(date)
 pegarpontos()
 
 async function baterponto() {
-
+if(confirm("Confirmar ponto?")){
     gethora()
     date=ano4+"-"+(mes+1)+"-"+dia
     console.log(date)
@@ -105,7 +105,7 @@ async function baterponto() {
     }
 
     location.reload()
-}
+}}
 
 
 
