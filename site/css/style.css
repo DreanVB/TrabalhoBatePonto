@@ -176,3 +176,7 @@
         max-height: 200px;
         overflow: auto;  
     }
+    .icone{
+        height: 26px;
+        width: 20px;
+    }
