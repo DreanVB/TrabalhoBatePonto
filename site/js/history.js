@@ -5,11 +5,11 @@ if(adm=="1"){
 idFolha = ""
 async function pegarhistory() {
     id = localStorage.idUsuario
-    folhas = await (await fetch("http://127.0.0.1:3000/folhas")).json()
+    folhas = await (await fetch("http://192.168.0.10:3000/folhas")).json()
     folha = folhas.find((elemento) => elemento.idUsuario == id)
     document.getElementById("nome1").innerHTML = folha.nome
     document.getElementById("rg1").innerHTML = folha.cpf
-    pontos = await (await fetch("http://127.0.0.1:3000/pontos")).json()
+    pontos = await (await fetch("http://192.168.0.10:3000/pontos")).json()
     ponto = pontos.filter((elemento) => elemento.idFolha == folha.id)
     for (let elemento of ponto) {
         document.getElementById("tabeladeponto").innerHTML += `<tr onclick="editor('${elemento.id}','${elemento.data.split("T")[0]}','${elemento.entrada1}','${elemento.saida1}','${elemento.entrada2}','${elemento.saida2}')"><td>${elemento.data.split("T")[0]}</td><td>${elemento.entrada1}</td><td>${elemento.saida1}</td><td>${elemento.entrada2}</td><td>${elemento.saida2}</td></tr>`
@@ -48,7 +48,7 @@ console.log(minutos, horas)
     horasTrabalhadas = (horasFinalDia).toTimeString().split(` `)[0]
 
     console.log(horasTrabalhadas)
-    await (await fetch(`http://127.0.0.1:3000/editarHoras/${idFolha}/${entrada1}/${saida1}/${entrada2}/${saida2}/${horasTrabalhadas}`)).json()
+    await (await fetch(`http://192.168.0.10:3000/editarHoras/${idFolha}/${entrada1}/${saida1}/${entrada2}/${saida2}/${horasTrabalhadas}`)).json()
     location.reload()
 }
 

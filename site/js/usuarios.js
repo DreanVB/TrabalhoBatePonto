@@ -6,7 +6,7 @@ if(adm != "1")
 }
 async function getUsuarios()
 {
-   usuarios = await (await fetch("http://127.0.0.1:3000/usuarios")).json()
+   usuarios = await (await fetch("http://192.168.0.10:3000/usuarios")).json()
     for (let elemento of usuarios)
     {
         document.getElementById("customers").innerHTML += `<tr><td>${elemento.login}</td><td>${elemento.senha}</td><td ><i onClick="apagarUsuario('${elemento.id}')" class="fa-solid fa-trash-can iconevermelho"></i></td></tr>`
@@ -15,7 +15,7 @@ async function getUsuarios()
 async function apagarUsuario(id)
 {
   if(confirm("Deseja apagar o usuario permanentemente?")){
-    await (await fetch("http://127.0.0.1:3000/apagar/"+id)).json()
+    await (await fetch("http://192.168.0.10:3000/apagar/"+id)).json()
     location.reload()    }
 }
 async function criarUsuario()
@@ -26,7 +26,7 @@ async function criarUsuario()
     nome=document.getElementById("nome").value
     id=uuidv4()
     idFolha=uuidv4()
-    await (await fetch(`http://127.0.0.1:3000/criarUsuario/${login}/${senha}/${id}/${nome}/${idFolha}`)).json()
+    await (await fetch(`http://192.168.0.10:3000/criarUsuario/${login}/${senha}/${id}/${nome}/${idFolha}`)).json()
     location.reload()
 
 }
