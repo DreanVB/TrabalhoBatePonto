@@ -66,7 +66,7 @@ if(confirm("Confirmar ponto?")){
     }
 
     console.log(pontohoje)
-    calculoHorasTrabalhadas = 0
+    calculoHorasTrabalhadas = false
     if (pontohoje != undefined) {
         if (pontohoje.saida1 == "00:00:00") {
             console.log(str_hora)
@@ -104,7 +104,10 @@ if(confirm("Confirmar ponto?")){
             calculoHorasTrabalhadas = (horasFinalDia).toTimeString().split(` `)[0]
 
         }
-        await (await fetch(`http://127.0.0.1:3000/atualizapontos?entrada1=${pontohoje.entrada1}&entrada2=${pontohoje.entrada2}&saida1=${pontohoje.saida1}&saida2=${pontohoje.saida2}&data=${date}&idFolha=${pontohoje.idFolha}&id=${pontohoje.id}&horasTrabalhadas=${calculoHorasTrabalhadas}`)).json()
+        if (calculoHorasTrabalhadas!=false)
+        {
+            await (await fetch(`http://127.0.0.1:3000/atualizapontos?entrada1=${pontohoje.entrada1}&entrada2=${pontohoje.entrada2}&saida1=${pontohoje.saida1}&saida2=${pontohoje.saida2}&data=${date}&idFolha=${pontohoje.idFolha}&id=${pontohoje.id}&horasTrabalhadas=${calculoHorasTrabalhadas}`)).json()
+        }
 
     }
 

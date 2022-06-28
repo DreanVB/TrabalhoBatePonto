@@ -63,6 +63,7 @@ async function pegarpontos()
    date=new Date((mes+1)+"/"+dia+"/"+ano4).toISOString()
     console.log(ponto)
     bancoHoras =new Date("0001-01-01 00:00:00")
+    console.log(bancoHoras)
     for(p of ponto ){
         console.log(p)
         horas = p.horasTrabalhadas.split(":")[0]
