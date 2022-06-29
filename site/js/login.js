@@ -5,7 +5,7 @@ if(logado == "true")
 }
 async function login()
 {
-    usuarios = await (await fetch("http://192.168.0.10:3000/usuarios")).json()
+    usuarios = await (await fetch("http://127.0.0.1:3000/usuarios")).json()
     console.log(usuarios)
     usuario = document.getElementById("usuario").value
     senha = document.getElementById("senha").value

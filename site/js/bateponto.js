@@ -17,9 +17,9 @@ pontohoje={}
 async function pegarpontos()
 {
     id = localStorage.idUsuario
-    folhas = await (await fetch("http://192.168.0.10:3000/folhas")).json()
+    folhas = await (await fetch("http://127.0.0.1:3000/folhas")).json()
     folha = folhas.find((elemento) => elemento.idUsuario == id)
-    pontos =  await (await fetch("http://192.168.0.10:3000/pontos")).json()
+    pontos =  await (await fetch("http://127.0.0.1:3000/pontos")).json()
     ponto = pontos.filter((elemento) => elemento.idFolha == folha.id)
     console.log(str_data,pontos)
     date=(mes+1)+"/"+dia+"/"+ano4
@@ -59,7 +59,7 @@ if(confirm("Confirmar ponto?")){
             "id": uuidv4()
         }
         
-        await (await fetch(`http://192.168.0.10:3000/criapontos?entrada1=${str_hora}&entrada2=00:00&saida1=00:00&saida2=00:00&data=${date}&idFolha=${folha.id}&id=${uuidv4()}&horasTrabalhadas=${"00:00"}`)).json()
+        await (await fetch(`http://127.0.0.1:3000/criapontos?entrada1=${str_hora}&entrada2=00:00&saida1=00:00&saida2=00:00&data=${date}&idFolha=${folha.id}&id=${uuidv4()}&horasTrabalhadas=${"00:00"}`)).json()
         pontos.push(gravarponto)
         localStorage.folhadepontos = JSON.stringify(pontos)
 
@@ -106,7 +106,7 @@ if(confirm("Confirmar ponto?")){
         }
         if (calculoHorasTrabalhadas!=false)
         {
-            await (await fetch(`http://192.168.0.10:3000/atualizapontos?entrada1=${pontohoje.entrada1}&entrada2=${pontohoje.entrada2}&saida1=${pontohoje.saida1}&saida2=${pontohoje.saida2}&data=${date}&idFolha=${pontohoje.idFolha}&id=${pontohoje.id}&horasTrabalhadas=${calculoHorasTrabalhadas}`)).json()
+            await (await fetch(`http://127.0.0.1:3000/atualizapontos?entrada1=${pontohoje.entrada1}&entrada2=${pontohoje.entrada2}&saida1=${pontohoje.saida1}&saida2=${pontohoje.saida2}&data=${date}&idFolha=${pontohoje.idFolha}&id=${pontohoje.id}&horasTrabalhadas=${calculoHorasTrabalhadas}`)).json()
         }
 
     }

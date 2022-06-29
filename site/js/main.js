@@ -53,10 +53,10 @@ function uuidv4() {
 async function pegarpontos()
 {
     id = localStorage.idUsuario
-    folhas = await (await fetch("http://192.168.0.10:3000/folhas")).json()
+    folhas = await (await fetch("http://127.0.0.1:3000/folhas")).json()
     folha = folhas.find((elemento) => elemento.idUsuario == id)
     document.getElementById("nome2").innerHTML = folha.nome
-    pontos =  await (await fetch("http://192.168.0.10:3000/pontos")).json()
+    pontos =  await (await fetch("http://127.0.0.1:3000/pontos")).json()
     ponto = pontos.filter((elemento) => elemento.idFolha == folha.id)
     console.log(str_data,pontos)
     date=(mes+1)+"/"+dia+"/"+ano4
